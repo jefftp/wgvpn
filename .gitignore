@@ -1,0 +1,11 @@
+# Private variables
+variables.json
+
+# Cached objects
+packer_cache/
+
+# Output files
+output-wgvpn/
+
+# OVA
+*.ova
