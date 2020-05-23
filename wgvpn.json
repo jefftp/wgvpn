@@ -78,7 +78,8 @@
     {
       "type": "shell-local",
       "inline": [
-        "ovftool output-wgvpn/wgvpn.vmx wgvpn-`date +%Y%m%d`.ova"
+        "ovftool output-wgvpn/wgvpn.vmx wgvpn-`date +%Y%m%d`.ova",
+        "rm -rf output-wgvpn"
       ]
     }
   ]
