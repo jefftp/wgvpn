@@ -1,3 +1,6 @@
+# Stop logging
+service syslog stop
+
 # Remove any existing ssh keys
 rm -fv /etc/ssh/ssh_host_*
 

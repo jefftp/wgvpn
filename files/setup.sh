@@ -13,13 +13,17 @@ apk update
 apk upgrade
 
 # Install packages
-apk add open-vm-tools wireguard-tools vim nano
+apk add open-vm-tools man man-pages wireguard-tools wireguard-tools-doc vim vim-doc nano nano-doc
 
 # Start services
 rc-update add open-vm-tools default
 
 # Enable IPv4 IP Forwarding
 echo "net.ipv4.ip_forward=1" > /etc/sysctl.d/10-ipv4-ip-forward.conf
+
+# Copy wireguard openrc script into place
+cp /tmp/wireguard.openrc /etc/init.d/wireguard
+chmod 644 /etc/init.d/wireguard
 
 # Copy wireguard configuration template into place
 cp /tmp/wg.conf.tmpl /etc/wireguard

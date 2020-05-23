@@ -52,6 +52,11 @@
   "provisioners": [
     {
       "type": "file",
+      "source": "files/wireguard.openrc",
+      "destination": "/tmp/wireguard.openrc"
+    },
+    {
+      "type": "file",
       "source": "files/wg.conf.tmpl",
       "destination": "/tmp/wg.conf.tmpl"
     },

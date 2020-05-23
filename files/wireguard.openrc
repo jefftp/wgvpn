@@ -1,0 +1,23 @@
+#!/sbin/openrc-run
+
+instance_name=${SVCNAME#*.}
+description="Wireguard via wg-quick for ${instance_name}"
+command="/usr/bin/wg-quick"
+required_files="/etc/wireguard/${instance_name}.conf
+
+depend() {
+    need localmount net
+    use dns
+}
+
+start() {
+    ebegin "Starting ${SVCNAME}"
+    ${command} up $instance_name
+    eend $?
+}
+
+stop() {
+    ebegin "Stopping ${SVCNAME}
+    ${command} down $instance_name
+    eend $?
+}
