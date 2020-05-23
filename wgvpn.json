@@ -1,0 +1,80 @@
+{
+  "builders": [
+    {
+      "name": "wgvpn",
+      "vm_name": "wgvpn",
+      "type": "vmware-iso",
+      "guest_os_type": "other5xlinux-64",
+      "headless": false,
+
+      "version": "13",
+      "cpus": "1",
+      "cores": "1",
+      "memory": "512",
+      "disk_size": "1024",
+      "network_adapter_type": "VMXNET3",
+      "vmx_data": {
+        "disk.EnableUUID" : "TRUE",
+        "scsi0.virtualdev" : "pvscsi"
+      },
+
+      "iso_url": "http://dl-cdn.alpinelinux.org/alpine/v3.11/releases/x86_64/alpine-virt-3.11.6-x86_64.iso",
+      "iso_checksum": "86c511faf8232eace478760695f5dbeeb93a16003576317e16a9e3816355e6b7",
+      "iso_checksum_type": "sha256",
+
+      "ssh_username": "root",
+      "ssh_password": "{{user `root_password`}}",
+      "ssh_timeout": "30m",
+
+      "http_directory": "http",
+
+      "boot_wait": "15s",
+      "boot_command": [
+        "root<enter><wait>",
+        "ifconfig eth0 up<enter>",
+        "udhcpc -i eth0<enter><wait10>",
+        "wget http://{{ .HTTPIP }}:{{ .HTTPPort }}/answers<enter><wait>",
+        "setup-alpine -f answers<enter><wait10>",
+        "{{user `root_password`}}<enter><wait>",
+        "{{user `root_password`}}<enter>",
+        "<wait10>y<enter><wait30s>",
+        "reboot<enter><wait30s>",
+        "root<enter><wait>",
+        "{{user `root_password`}}<enter><wait>",
+        "sed -i 's/^#PermitRootLogin .*/PermitRootLogin yes/g' /etc/ssh/sshd_config<enter>",
+        "service sshd restart<enter>",
+        "exit<enter>"
+      ],
+
+      "shutdown_command": "/sbin/poweroff"
+    }
+  ],
+  "provisioners": [
+    {
+      "type": "file",
+      "source": "files/wg.conf.tmpl",
+      "destination": "/tmp/wg.conf.tmpl"
+    },
+    {
+      "type": "file",
+      "source": "files/motd",
+      "destination": "/tmp/motd"
+    },
+    {
+      "type": "shell",
+      "script": "files/setup.sh"
+    },
+    {
+      "type": "shell",
+      "script": "files/cleanup.sh"
+    }
+  ],
+  "post-processors": [
+    {
+      "type": "shell-local",
+      "inline": [
+        "ovftool output-wgvpn/wgvpn.vmx wgvpn-`date +%Y%m%d`.ova"
+      ]
+    }
+  ]
+}
