@@ -1,6 +1,6 @@
 # Wireguard VPN VM Template
 
-Use HashiCorp Packer to build an Alpine Linux VM with support for Wireguard VPN.
+Packer template for building Alpine Linux as a Wireguard VPN appliance.
 
 - Packages updated as built
 - Open-vm-tools installed
