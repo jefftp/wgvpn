@@ -1,13 +1,22 @@
 #!/sbin/openrc-run
 
-instance_name=${SVCNAME#*.}
+instance_name="${RC_SVCNAME#*.}"
 description="Wireguard via wg-quick for ${instance_name}"
 command="/usr/bin/wg-quick"
-required_files="/etc/wireguard/${instance_name}.conf
+required_files="/etc/wireguard/${instance_name}.conf"
 
 depend() {
     need localmount net
     use dns
+}
+
+start_pre() {
+    if [ -z "$instance_name" ]; then
+        eerror "${RC_SVCNAME} cannot be started directly. You must create"
+        eerror "symbolic links to it for the tunnel interfaces you want"
+        eerror "to start and add those to the appropriate runlevels."
+        return 1
+    fi
 }
 
 start() {
@@ -17,7 +26,7 @@ start() {
 }
 
 stop() {
-    ebegin "Stopping ${SVCNAME}
+    ebegin "Stopping ${SVCNAME}"
     ${command} down $instance_name
     eend $?
 }

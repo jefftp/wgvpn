@@ -1,24 +1,10 @@
 [Interface]
-# IP address of the local VPN tunnel interface
 Address = #vpn_local_tun_ip
-
-# Wireguard private key of the localhost (Created by CLI command: wg genkey)
-PrivateKey = #vpn_local_key
-
-# UDP port to listen on for incoming connections
+PrivateKey = #vpn_local_private_key
 ListenPort = #vpn_port
 
-
 [Peer]
-# The IP address of the VPN peer, not needed on VPN hubs
 Endpoint = #vpn_peer_ip
-
-# The wireguard public key of the peer
-PublicKey = #vpn_peer_pub
-
-# The IP subnets allowed over the Wireguard VPN to this peer
+PublicKey = #vpn_peer_pubic_key
 AllowedIPs = #vpn_allowed_ips
-
-
-# Keep the connection alive in spite of UDP connection timeouts on intervening firewalls
 PersistentKeepalive = 25
