@@ -31,26 +31,39 @@ passwd
 
 ### Configure networking
 
-```bash
-# Set the system hostname
-echo "iland-vpn-01" > /etc/hostname
-hostname -F /etc/hostname
+Set a hostname using setup-hostname or edit /etc/resolv.conf.
 
-# Configure a nameserver (using Cloudflare)
-echo "nameserver 1.1.1.1" > /etc/resolv.conf
+```bash
+> setup-hostname
+Enter system hostname (short form, e.g. 'foo') [wgvpn] wgvpn-01
 ```
 
-Using either vim or nano, edit /etc/network/interfaces:
+The eth0 interface defaults to DHCP, you can use the setup-interfaces
+command or edit /etc/network/interfaces to configure a static IP.
 
-```readline config
-auto lo
-iface lo inet loopback
+```bash
+> setup-interfaces
+Available interfaces are: eth0
+Enter '?' for help on bridges, bonding and vlans.
+Which one do you want to initialize? (or '?' or 'done') [eth0] eth0
+Ip address for eth0? (or 'dhcp', 'none', '?') [dhcp] 192.168.0.10
+Netmask? [255.255.255.0] 255.255.255.0
+Gateway? (or 'none') [none] 192.168.0.1
+Configuration for eth0:
+  type=static
+  address=192.168.0.10
+  netmask=255.255.255.0
+  gateway=192.168.0.1
+Do you want to do any manual network configuration? [no] no
+```
 
-auto eth0
-iface eth0 inet static
-  address 172.18.0.254
-  netmask 255.255.255.0
-  gateway 172.18.0.1
+If using a static IP, configure DNS with the setup-dns command or edit
+/etc/resolv.conf.
+
+```bash
+> setup-dns
+DNS domain name? (e.g. 'bar.com') [] example.com
+DNS nameserver(s)? [1.1.1.1] 192.168.0.53 192.168.1.53 1.1.1.1
 ```
 
 Restart networking to put changes into effect.
@@ -72,7 +85,7 @@ umask 077
 # Save the private key to wghub.key.
 # Use the private key to generate the public key.
 # Save the public key to wghub.pub.
-sudo wg genkey | tee wghub.key | wg pubkey > wghub.pub
+wg genkey | tee wghub.key | wg pubkey > wghub.pub
 
 # Create a wireguard config
 cp wg.conf.tmpl wg0.conf
