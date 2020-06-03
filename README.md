@@ -63,7 +63,7 @@ If using a static IP, configure DNS with the setup-dns command or edit
 ```bash
 > setup-dns
 DNS domain name? (e.g. 'bar.com') [] example.com
-DNS nameserver(s)? [1.1.1.1] 192.168.0.53 192.168.1.53 1.1.1.1
+DNS nameserver(s)? [] 192.168.0.53 192.168.1.53
 ```
 
 Restart networking to put changes into effect.

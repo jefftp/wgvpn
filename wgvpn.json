@@ -4,7 +4,7 @@
       "name": "wgvpn",
       "vm_name": "wgvpn",
       "type": "vmware-iso",
-      "guest_os_type": "other5xlinux-64",
+      "guest_os_type": "other3xlinux-64",
       "headless": false,
 
       "version": "13",
