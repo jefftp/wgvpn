@@ -18,8 +18,8 @@
         "scsi0.virtualdev" : "pvscsi"
       },
 
-      "iso_url": "http://dl-cdn.alpinelinux.org/alpine/v3.11/releases/x86_64/alpine-virt-3.11.6-x86_64.iso",
-      "iso_checksum": "sha256:86c511faf8232eace478760695f5dbeeb93a16003576317e16a9e3816355e6b7",
+      "iso_url": "http://dl-cdn.alpinelinux.org/alpine/v3.12/releases/x86_64/alpine-virt-3.12.0-x86_64.iso",
+      "iso_checksum": "sha256:fe694a34c0e2d30b9e5dea7e2c1a3892c1f14cb474b69cc5c557a52970071da5",
 
       "ssh_username": "root",
       "ssh_password": "{{user `root_password`}}",
