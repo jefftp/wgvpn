@@ -18,6 +18,13 @@ network microsegmentation, and network-based intrusion prevention.
 Use this image at your own peril. If you expose a weakly secured SSH server
 to the internet without proper security you're going to get pwned.
 
+# Getting the OVA
+
+If you'd just like to download the OVA, it's available on the releases
+page:
+
+<https://github.com/jefftp/wgvpn/releases/tag/v1.1>
+
 ## Setup
 
 Once the template is deployed log in to the VM with the VM console and login
