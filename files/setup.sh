@@ -6,17 +6,17 @@ sed -i 's/^\(tty5.*\)/#\1/g' /etc/inittab
 sed -i 's/^\(tty6.*\)/#\1/g' /etc/inittab
 
 # Add community repository
-echo "http://dl-cdn.alpinelinux.org/alpine/v3.11/community" >> /etc/apk/repositories
+echo "http://dl-cdn.alpinelinux.org/alpine/v3.12/community" >> /etc/apk/repositories
 
 # Update and Upgrade
 apk update
 apk upgrade
 
 # Install packages
-apk add open-vm-tools man man-pages wireguard-tools wireguard-tools-doc vim vim-doc nano nano-doc
+apk add open-vm-tools mandoc man-pages wireguard-tools wireguard-tools-doc vim vim-doc nano nano-doc
 
 # Start services
-rc-update add open-vm-tools default
+rc-update add open-vm-tools boot
 
 # Enable IPv4 IP Forwarding
 echo "net.ipv4.ip_forward=1" > /etc/sysctl.d/10-ipv4-ip-forward.conf

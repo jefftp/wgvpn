@@ -17,9 +17,8 @@
         "disk.EnableUUID" : "TRUE",
         "scsi0.virtualdev" : "pvscsi"
       },
-
-      "iso_url": "http://dl-cdn.alpinelinux.org/alpine/v3.12/releases/x86_64/alpine-virt-3.12.0-x86_64.iso",
-      "iso_checksum": "sha256:fe694a34c0e2d30b9e5dea7e2c1a3892c1f14cb474b69cc5c557a52970071da5",
+      "iso_url": "http://dl-cdn.alpinelinux.org/alpine/v3.12/releases/x86_64/alpine-virt-3.12.1-x86_64.iso",
+      "iso_checksum": "sha256:bb87644518e85972582e25b5c872854f28de615e04cb58c1cdaadc46d3ae60ba",
 
       "ssh_username": "root",
       "ssh_password": "{{user `root_password`}}",
@@ -36,7 +35,7 @@
         "setup-alpine -f answers<enter><wait10>",
         "{{user `root_password`}}<enter><wait>",
         "{{user `root_password`}}<enter>",
-        "<wait10>y<enter><wait30s>",
+        "<wait20s>y<enter><wait30s>",
         "reboot<enter><wait30s>",
         "root<enter><wait>",
         "{{user `root_password`}}<enter><wait>",
@@ -44,7 +43,7 @@
         "service sshd restart<enter>",
         "exit<enter>"
       ],
-
+        
       "shutdown_command": "/sbin/poweroff"
     }
   ],
