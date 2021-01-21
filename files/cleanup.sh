@@ -1,3 +1,5 @@
+#!/bin/sh
+
 # Stop logging
 service syslog stop
 

@@ -1,3 +1,5 @@
+#!/bin/sh
+
 # Disable unnecessary serial console
 sed -i 's/^\(ttyS0.*\)/#\1/g' /etc/inittab
 
