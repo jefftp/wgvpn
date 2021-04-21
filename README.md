@@ -25,6 +25,8 @@ page:
 
 <https://github.com/jefftp/wgvpn/releases/tag/v1.3.0>
 
+The OVA root password is set to *wgvpn*.
+
 ## Setup
 
 Once the template is deployed log in to the VM with the VM console and login
