@@ -13,7 +13,7 @@ Packer template for building Alpine Linux as a Wireguard VPN appliance.
 The resulting VM OVA is configured to allow root logins both locally and
 remotely through SSH, using passwords. The VM is relying on external
 security measures to provide security such as perimeter firewalls,
-network microsegmentation, and network-based intrusion prevention.
+network micro-segmentation, and network-based intrusion prevention.
 
 Use this image at your own peril. If you expose a weakly secured SSH server
 to the internet without proper security you're going to get pwned.
