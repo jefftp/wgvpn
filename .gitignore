@@ -1,5 +1,6 @@
 # Private variables
 variables.json
+variables.pkrvars.hcl
 
 # Cached objects
 packer_cache/
