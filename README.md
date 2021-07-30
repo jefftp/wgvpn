@@ -23,7 +23,7 @@ to the internet without proper security you're going to get pwned.
 If you'd just like to download the OVA, it's available on the releases
 page:
 
-<https://github.com/jefftp/wgvpn/releases/tag/v1.3.0>
+<https://github.com/jefftp/wgvpn/releases/tag/v1.4.0>
 
 The OVA root password is set to *wgvpn*.
 
