@@ -6,8 +6,8 @@ variable "root_password" {
 }
 
 source "vmware-iso" "wgvpn" {
-  iso_url              = "https://dl-cdn.alpinelinux.org/alpine/v3.14/releases/x86_64/alpine-virt-3.14.2-x86_64.iso"
-  iso_checksum         = "sha256:fcba6ecc8419da955d326a12b2f6d9d8f885a420a1112e0cf1910914c4c814a7"
+  iso_url              = "https://dl-cdn.alpinelinux.org/alpine/v3.15/releases/x86_64/alpine-virt-3.15.0-x86_64.iso"
+  iso_checksum         = "sha256:e97eaedb3bff39a081d1d7e67629d5c0e8fb39677d6a9dd1eaf2752e39061e02"
   vm_name              = "wgvpn"
   version              = "13"
   guest_os_type        = "other3xlinux-64"
@@ -31,7 +31,7 @@ source "vmware-iso" "wgvpn" {
     "ifconfig eth0 up<enter>",
     "udhcpc -i eth0<enter><wait10>",
     "wget http://{{ .HTTPIP }}:{{ .HTTPPort }}/answers<enter><wait>",
-    "setup-alpine -f answers<enter><wait10>",
+    "USERANSERFILE=1 setup-alpine -f answers<enter><wait10>",
     "${var.root_password}<enter><wait>",
     "${var.root_password}<enter>",
     "<wait20s>y<enter><wait30s>",
