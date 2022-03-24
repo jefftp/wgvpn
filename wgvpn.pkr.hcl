@@ -31,7 +31,7 @@ source "vmware-iso" "wgvpn" {
     "ifconfig eth0 up<enter>",
     "udhcpc -i eth0<enter><wait10>",
     "wget http://{{ .HTTPIP }}:{{ .HTTPPort }}/answers<enter><wait>",
-    "USERANSERFILE=1 setup-alpine -f answers<enter><wait10>",
+    "setup-alpine -f answers<enter><wait10>",
     "${var.root_password}<enter><wait>",
     "${var.root_password}<enter>",
     "<wait20s>y<enter><wait30s>",
