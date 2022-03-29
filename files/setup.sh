@@ -8,7 +8,7 @@ sed -i 's/^\(tty5.*\)/#\1/g' /etc/inittab
 sed -i 's/^\(tty6.*\)/#\1/g' /etc/inittab
 
 # Add community repository
-echo "http://dl-cdn.alpinelinux.org/alpine/v3.14/community" >> /etc/apk/repositories
+echo "http://dl-cdn.alpinelinux.org/alpine/v3.15/community" >> /etc/apk/repositories
 
 # Update and Upgrade
 apk update
