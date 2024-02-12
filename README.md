@@ -1,3 +1,5 @@
+# NOTE: THIS PROJECT IS NO LONGER MAINTAINED.
+
 # Wireguard VPN VM Template
 
 Packer template for building Alpine Linux as a Wireguard VPN appliance.
